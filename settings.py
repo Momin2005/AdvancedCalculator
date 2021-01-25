@@ -1,18 +1,19 @@
 from tkinter import *
-
+import visuals
 
 win = Tk()
 
 class Setup:
      def __init__(self):
           self.title = "Calculator"
-          self.bgColor = "#323232"
+          self.bgColor = "#323232"      # can you set in this comment wich color this is.
           self.geo = "640x480"
 
           self.setup()
      
      def setup(self):
           self.start()
+          visuals.vistual_setup()       # can you fix this please
 
      def start(self):
           win.title(self.title)
