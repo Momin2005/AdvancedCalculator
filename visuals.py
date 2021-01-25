@@ -1,6 +1,6 @@
 from settings import *
 
-class vistual_setup:
+class visual_setup:
     def __init__(self):
         self.font = '("new courier", 20)'
         self.squire = 5
@@ -17,7 +17,7 @@ class vistual_setup:
         return disp
 
     def init_numeric_buttons(self):
-        button1 = Button(win, text="1", font=self.font, width=self.squire, padx=self.squire, pady=self.squire,command=lambda:input_disp(1, disp))
+        button1 = Button(win, text="1", font=self.font, width=self.squire, padx=self.squire, pady=self.squire, command=lambda:input_disp(1, disp))
         button1.grid(row=0, column=3)
 
 

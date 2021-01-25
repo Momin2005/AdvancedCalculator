@@ -13,7 +13,7 @@ class Setup:
      
      def setup(self):
           self.start()
-          visuals.vistual_setup()       # can you fix this please
+          visuals.visual_setup()      # can you fix this please
 
      def start(self):
           win.title(self.title)
