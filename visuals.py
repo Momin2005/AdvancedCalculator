@@ -1,8 +1,9 @@
 from settings import *
+from tkinter import *
 
 class visual_setup:
     def __init__(self):
-        self.font = '("new courier", 20)'
+        self.font = '("new courier", 50)'
         self.squire = 5
         self.entry()
 
@@ -15,6 +16,7 @@ class visual_setup:
     def entry(self):
         disp = Entry(win, columnspan=1)
         disp.grid(row=0, column=0)
+        self.update()
         return disp
 
     def init_numeric_buttons(self):
@@ -22,3 +24,6 @@ class visual_setup:
                          command=lambda :input_disp(1, disp))
         button1.grid(row=0, column=3)
 
+
+    def update(self):
+        settings.Setup.run()
