@@ -1,27 +1,27 @@
 from tkinter import *
-import visuals
-
-win = Tk()
+from visuals import *
 
 class Setup:
      def __init__(self):
           self.title = "Calculator"
-          self.bgColor = "#323232"      # can you set in this comment wich color this is.
+          self.bgColor = "#323232"      # can you set in this comment witch color this is.
           self.geo = "640x480"
+          self.win = Tk()
 
           self.setup()
      
      def setup(self):
           self.start()
-          visuals.visual_setup().init_numeric_buttons()    # can you fix this please
+
 
      def start(self):
-          win.title(self.title)
-          win.config(bg = self.bgColor)
-          win.geometry(self.geo)
-          win.maxsize(640, 480)
-          win.minsize(640, 480)
+          self.win.title(self.title)
+          self.win.config(bg = self.bgColor)
+          self.win.geometry(self.geo)
+          self.win.maxsize(640, 480)
+          self.win.minsize(640, 480)
+          visual_setup(self)
           self.run()
 
      def run(self):
-          win.mainloop()
+          self.win.mainloop()
