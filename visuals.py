@@ -1,10 +1,10 @@
-from settings import *
+from parameters import *
 from tkinter import *
 
 class visual_setup:
     def __init__(self, setting_self):
         print("__init__")
-        self.Button = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "clear"]
+        self.Button = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "clear", "delete", "+", "-", "*", "/"]
         self.num_on_butt = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
         self.font = ("new courier", 10)
         self.squire = 4
@@ -52,6 +52,9 @@ class visual_setup:
 
         self.clear_button()
 
+        self.opperator_buttons()
+
+
     def clear_button(self):
         print(f"butt_made:clear")
         self.Button[10] = Button(self.settings_self.win, text="clear", font=self.font,
@@ -59,8 +62,34 @@ class visual_setup:
 
         self.Button[10].grid(row=4, column=1)
 
+        print(f"butt_made:delete")
+        self.Button[11] = Button(self.settings_self.win, text="<=", font=self.font,
+            width=self.squire, padx=self.squire, pady=self.squire, command=lambda: self.delete())
+
+        self.Button[11].grid(row=4, column=2)
+
     def clear(self):
         print("clear")
         self.disp.delete(0, END)
+
+    def delete(self):
+        print("delete")
+        self.disp.delete(len(self.disp.get())-1, len(self.disp.get()))
+
+
+    def opperator_buttons(self):
+        self.make_operator(12, "+", 1, 5)
+        self.make_operator(13, "-", 2, 5)
+        self.make_operator(14, "*", 3, 5)
+        self.make_operator(15, "/", 4, 5)
+
+
+    def make_operator(self, matrix_place, text, x, y):
+        print(f"butt_made:{text}")
+        self.Button[matrix_place] = Button(self.settings_self.win, text=text, font=self.font,
+                                 width=self.squire, padx=self.squire, pady=self.squire, command=lambda: self.input_disp(text))
+
+        self.Button[matrix_place].grid(row=x, column=y)
+
 
 
