@@ -1,4 +1,3 @@
-# this is an useless comment
 from calculations import *
 from tkinter import *
 
