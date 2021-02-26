@@ -103,6 +103,3 @@ class visual_setup:
         print("delete")
         self.disp.delete(len(self.disp.get())-1, len(self.disp.get()))
 
-
-
-
