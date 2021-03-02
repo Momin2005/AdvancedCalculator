@@ -4,9 +4,9 @@ from tkinter import *
 class visual_setup:
     def __init__(self, setting_self):
         print("__init__")
-        self.Button = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "clear", "delete", "+", "-", "*", "/", "enter"]
+        self.Button = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "clear", "delete", "+", "-", "*", "/", "enter", "^"]
         self.num_on_butt = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-        self.font = ("new courier", 10)
+        self.font = ("courier new", 10)
         self.squire = 4
         self.num_made = 0
         self.settings_self = setting_self
@@ -22,7 +22,7 @@ class visual_setup:
     def entry(self):
         print("entry")
         self.disp = Entry(self.settings_self.win, font=self.font)
-        self.disp.grid(row=0, column=0, columnspan=4)
+        self.disp.grid(row=0, column=0, columnspan=5, ipadx=38)
         self.all_buttons()
         return self.disp
 
@@ -32,32 +32,34 @@ class visual_setup:
     def all_buttons(self):
         print("make_numeric_buttons")
 
-        self.make_nummeric_button(0, 4, 0)
-        self.make_nummeric_button(1, 3, 0)
-        self.make_nummeric_button(2, 3, 1)
-        self.make_nummeric_button(3, 3, 2)
-        self.make_nummeric_button(4, 2, 0)
-        self.make_nummeric_button(5, 2, 1)
-        self.make_nummeric_button(6, 2, 2)
-        self.make_nummeric_button(7, 1, 0)
-        self.make_nummeric_button(8, 1, 1)
-        self.make_nummeric_button(9, 1, 2)
+        self.make_nummeric_button(0, 5, 0)
+        self.make_nummeric_button(1, 4, 0)
+        self.make_nummeric_button(2, 4, 1)
+        self.make_nummeric_button(3, 4, 2)
+        self.make_nummeric_button(4, 3, 0)
+        self.make_nummeric_button(5, 3, 1)
+        self.make_nummeric_button(6, 3, 2)
+        self.make_nummeric_button(7, 2, 0)
+        self.make_nummeric_button(8, 2, 1)
+        self.make_nummeric_button(9, 2, 2)
+        self.make_nummeric_button(".", 5, 2)
         print("make_other_buttons")
-        self.clear_button()
+        self.clear_button(1, 2)
 
         self.opperator_buttons()
-        self.enter("=", 5, 5)
+        self.enter("=", 5, 4)
 
     def opperator_buttons(self):
         print("make_operator_buttons")
-        self.make_operator(12, "+", 1, 5)
-        self.make_operator(13, "-", 2, 5)
-        self.make_operator(14, "*", 3, 5)
-        self.make_operator(15, "/", 4, 5)
-
-
+        self.make_operator(12, "+", 2, 3)
+        self.make_operator(13, "-", 3, 3)
+        self.make_operator(14, "*", 4, 3)
+        self.make_operator(15, "/", 5, 3)
+        self.make_operator(16, "^", 1, 1)
+        self.make_operator(17, "V", 1, 0)
 
     # button makers
+
     def make_nummeric_button(self, text, x, y):
         print(f"butt_made:{text}")
         self.Button[self.num_made] = Button(self.settings_self.win, text=text, font=self.font,
@@ -66,18 +68,18 @@ class visual_setup:
         self.Button[self.num_made].grid(row=x, column=y)
         self.num_made += 1
 
-    def clear_button(self):
+    def clear_button(self, x, y):
         print(f"butt_made:clear")
         self.Button[10] = Button(self.settings_self.win, text="clear", font=self.font,
             width=self.squire, padx=self.squire, pady=self.squire, command=lambda: self.clear())
 
-        self.Button[10].grid(row=4, column=1)
+        self.Button[10].grid(row=x, column=y)
 
         print(f"butt_made:delete")
         self.Button[11] = Button(self.settings_self.win, text="<=", font=self.font,
             width=self.squire, padx=self.squire, pady=self.squire, command=lambda: self.delete())
 
-        self.Button[11].grid(row=4, column=2)
+        self.Button[11].grid(row=x, column=y + 1)
 
     def make_operator(self, matrix_place, text, x, y):
         print(f"butt_made:{text}")

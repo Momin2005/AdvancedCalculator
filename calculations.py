@@ -1,4 +1,4 @@
-from parameters import *
+import math
 from tkinter import *
 from visuals import *
 
@@ -19,9 +19,9 @@ class calculation:
 
         return output
 
-    def split2(self, inpuT, placeOpp):
+    def split2(self, inpuT, placeOpp, lenopp):
         output = ""
-        for i in range(int(placeOpp) + 1, len(inpuT)):
+        for i in range(int(placeOpp) + 1 + lenopp, len(inpuT)):
             output += str(inpuT[i])
 
         return output
@@ -29,40 +29,49 @@ class calculation:
     def calculate(self, inpuT):
         calc = False
         output = 0
-        opperators = ["*", "/", "-", "+"]
+        opperators = ["s", "^", "V", "*", "/", "-", "+"]
         for opp in range(0, len(opperators)):
             for place in range(0, len(str(inpuT))):
 
                 if str(inpuT[place]) == opperators[opp]:
                     calc = True
 
-                    split_1 = float(self.calculate(self.split1(inpuT, place)))
-                    split_2 = float(self.calculate(self.split2(inpuT, place)))
-                    print(f"split1 {split_1} split2 {split_2}")
+                    split_1 = str(self.calculate(self.split1(inpuT, place)))
+                    split_2 = str(self.calculate(self.split2(inpuT, place, 0)))
+                    split_gon = str(self.calculate(self.split2(inpuT, place, 2)))
+                    print(f"split1 {split_1} split2 {split_2} splitgon {split_gon}")
 
                     if opperators[opp] == "*":
-
                         output = float(split_1) * float(split_2)
                         print(f"calculate(*) place({place})")
 
                     elif opperators[opp] == "/":
-
                         output = float(split_1) / float(split_2)
                         print(f"calculate(/) place({place})")
 
                     elif opperators[opp] == "-":
-
                         output = float(split_1) - float(split_2)
                         print(f"calculate(-) place({place})")
 
                     elif opperators[opp] == "+":
-
                         output = float(split_1) + float(split_2)
                         print(f"calculate(+) place({place})")
+
+                    elif opperators[opp] == "^":
+                        output = float(split_1) ** float(split_2)
+                        print(f"calculate(power) place({place})")
+
+                    elif opperators[opp] == "V":
+                        output = math.sqrt(float(split_2))
+                        print(f"calculate(V) place({place})")
+
+                    elif opperators[opp] == "s":
+                        output = math.sin(float(split_gon))
+                        print(f"calculate(sin) place({place})")
 
         if not calc:
             output = inpuT
 
-        print(f"return {output}")
+        # print(f"return {output}")
         return output
 
